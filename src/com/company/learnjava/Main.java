@@ -9,7 +9,7 @@ public class Main {
             success = AppStartUp.startApp();
         } catch (InterruptedException e){
             e.printStackTrace();
-            System.out.println("Some error occurred!");
+            System.out.println("Some error occurred which was not really expected!");
         }
 
         System.out.println("External services validation completed !! Result was :: "+ success);
