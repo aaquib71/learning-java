@@ -1,5 +1,9 @@
 package com.company.test;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+
 public class IceCream {
     private String flavor;
     private int quantity;
@@ -11,10 +15,17 @@ public class IceCream {
 
     @Override
     public String toString() {
-        return "IceCream{" +
-                "flavor='" + flavor + '\'' +
-                ", quantity=" + quantity +
-                '}';
+        ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        try {
+            String result = objectWriter.writeValueAsString(this);
+            return result;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return "IceCream{" +
+                    "flavor='" + flavor + '\'' +
+                    ", quantity=" + quantity +
+                    '}';
+        }
     }
 
     public String getFlavor() {
