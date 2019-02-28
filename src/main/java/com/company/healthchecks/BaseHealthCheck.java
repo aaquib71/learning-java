@@ -22,7 +22,6 @@ public abstract class BaseHealthCheck implements Runnable{
         this.serviceUp = false;
     }
 
-    @Override
     public void run() {
         try {
             verifyService();
