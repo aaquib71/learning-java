@@ -6,7 +6,7 @@ class Printer{
 
     public synchronized void printOdd(int number){
 
-        while(isOdd == false){
+        while(!isOdd){
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -25,7 +25,7 @@ class Printer{
 
     public synchronized void printEven(int number){
 
-        while(isOdd == true){
+        while(isOdd){
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -47,9 +47,9 @@ class Printer{
 }
 
 class TaskEvenOdd implements Runnable{
-    private Printer printer;
-    private boolean isEven;
-    private int maxLimit;
+    private final Printer printer;
+    private final boolean isEven;
+    private final int maxLimit;
 
     public TaskEvenOdd(Printer printer, boolean isEven, int max) {
         this.printer = printer;
